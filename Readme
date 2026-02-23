@@ -1,0 +1,153 @@
+# BTC 15-Minute Event Contract Prediction Project
+
+## Overview
+
+This project explores whether a data-driven model can predict short-term Bitcoin price movements over a 15-minute horizon well enough to outperform simple baselines in event-style contract markets.
+
+The focus is not just prediction accuracy, but whether signals are strong enough to generate a measurable edge in contracts such as:
+
+- “Will BTC be up in 15 minutes?”
+- “Will BTC be above/below X price in 15 minutes?”
+
+This is an experimental research project designed to test hypotheses about short-horizon price behavior under realistic constraints.
+
+---
+
+## Core Question
+
+Can short-term structure in Bitcoin price and volume data produce a statistically meaningful edge over:
+
+- Random guessing  
+- Naive directional bias  
+- Simple momentum rules  
+
+And if so, is that edge large enough to matter once trading friction, noise, and regime shifts are considered?
+
+---
+
+## Project Constraints
+
+This project is intentionally built under several real-world constraints:
+
+### 1. Limited Data Granularity
+Currently, the model primarily relies on standard OHLCV market data. It does not yet incorporate:
+
+- Full order book depth
+- Trade-level microstructure data
+- Funding rates or derivatives positioning
+- Market-implied probabilities from contract platforms
+
+These limitations restrict how much short-term signal can realistically be extracted.
+
+---
+
+### 2. Non-Stationary Market Conditions
+Bitcoin’s behavior changes across regimes:
+
+- Trending vs. ranging environments
+- High vs. low volatility periods
+- News-driven price shocks
+
+Any performance observed in one regime may degrade in another. This project treats robustness across time as more important than peak performance in a narrow window.
+
+---
+
+### 3. Short Horizon Noise
+A 15-minute window is inherently noisy. Signal-to-noise ratio is low, and:
+
+- Small price moves dominate outcomes
+- Slippage and spreads matter
+- Edge must be meaningfully larger than random variance
+
+This project does not assume easy predictability at this horizon.
+
+---
+
+### 4. Data Quality and Label Definitions
+Outcome definitions (e.g., up/down, threshold X) significantly influence results.
+
+Label construction is sensitive to:
+- Exact timestamp alignment
+- Candle boundaries
+- Forward return calculation method
+
+As data improves, label precision must also improve.
+
+---
+
+## Current Limitations
+
+At this stage, the project is constrained by:
+
+- Basic feature set
+- Limited external market context
+- Simplified evaluation assumptions
+- Incomplete modeling of transaction costs
+
+Results should be interpreted as preliminary research rather than deployable trading signals.
+
+---
+
+## Iteration Strategy
+
+This project is designed to evolve as data quality improves.
+
+When better data becomes available, key areas to update include:
+
+### 1. Feature Inputs
+Add:
+- Order book imbalance
+- Liquidity shifts
+- Real-time volatility measures
+- Derivatives positioning data
+
+### 2. Market Context
+Incorporate:
+- Broader crypto market correlations
+- Macro event markers
+- Funding rate regimes
+
+### 3. Contract-Specific Modeling
+If market-implied probabilities are available:
+- Compare predicted probability vs. market price
+- Model expected value directly
+- Adjust for payout structure
+
+### 4. Realistic Friction Modeling
+Include:
+- Spread assumptions
+- Fee structure
+- Latency effects
+
+---
+
+## Evaluation Philosophy
+
+The goal is not to maximize raw accuracy.
+
+Instead, evaluation prioritizes:
+
+- Stability over time
+- Calibration of probabilities
+- Edge relative to baseline
+- Sensitivity to regime shifts
+
+A small but consistent edge is more meaningful than a high but unstable hit rate.
+
+---
+
+## Future Directions
+
+Planned improvements include:
+
+- Better data feeds
+- Regime detection
+- Probability calibration refinements
+- Ensemble modeling approaches
+- Live simulation testing
+
+---
+
+## Disclaimer
+
+This project is for research and educational purposes only. Cryptocurrency markets are volatile and unpredictable. No guarantee of profitability is implied.
